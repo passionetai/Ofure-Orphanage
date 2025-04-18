@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Impact - Ofure Orphanage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js for donation chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- AOS (Animate On Scroll) Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <div class="logo-container floating">
+                            <img src="./images/logo.png" alt="Ofure Orphanage Logo" class="h-12 w-auto">
+                        </div>
+                        <span class="ml-3 text-xl font-bold text-gray-800">Ofure Orphanage</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Home</a>
+                    <a href="aboutus.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">About Us</a>
+                    <a href="impact.html" class="nav-link text-indigo-600 font-semibold">Our Impact</a>
+                    <a href="involve.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Get Involved</a>
+                    <a href="gallery.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Gallery</a>
+                    <a href="contact.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobileMenuButton" class="text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu md:hidden">
+                <div class="pt-4 pb-2 space-y-2">
+                    <a href="index.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Home</a>
+                    <a href="aboutus.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">About Us</a>
+                    <a href="impact.html" class="block px-3 py-2 rounded-md bg-indigo-50 text-indigo-700">Our Impact</a>
+                    <a href="involve.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Get Involved</a>
+                    <a href="gallery.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Gallery</a>
+                    <a href="contact.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-r from-indigo-900 to-purple-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Impact</h1>
+                <div class="w-20 h-1 bg-amber-500 mx-auto"></div>
+                <p class="text-xl mt-6 max-w-3xl mx-auto">
+                    Transforming lives, building futures, and creating lasting change for vulnerable children in our community.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Overview Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Making a Difference</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    For over 10 years, Ofure Orphanage has been committed to providing not just a home, but a foundation of faith, discipline, and love that empowers children to overcome their circumstances and thrive.
+                </p>
+            </div>
+
+            <!-- Impact Areas -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100 transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-home text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">Safe Housing</h3>
+                    <p class="text-gray-600 text-center">
+                        We provide clean, comfortable dormitories with 24/7 caregiver support, creating a true home environment for our children where they feel safe, loved, and nurtured.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100 transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-graduation-cap text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">Quality Education</h3>
+                    <p class="text-gray-600 text-center">
+                        All school-aged children attend local schools with uniforms, supplies, and tutoring provided by our staff, ensuring they have the tools they need to succeed academically.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100 transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-amber-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-heartbeat text-amber-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">Healthcare</h3>
+                    <p class="text-gray-600 text-center">
+                        Regular medical check-ups, dental care, and nutrition programs ensure our children grow up healthy and strong, with access to the care they need to thrive.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Additional Impact Areas -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100 transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-brain text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">Counseling</h3>
+                    <p class="text-gray-600 text-center">
+                        Our trained counselors help children process trauma and build resilience through individual and group therapy, providing emotional support and guidance.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100 transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-futbol text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">Extracurriculars</h3>
+                    <p class="text-gray-600 text-center">
+                        Sports, arts, music, and vocational training programs help children discover their talents and passions, developing well-rounded individuals with diverse skills.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100 transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-users text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">Community</h3>
+                    <p class="text-gray-600 text-center">
+                        We maintain connections with extended family when possible and facilitate adoption or foster care placements, ensuring children maintain important relationships.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Success Stories</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Meet some of the children whose lives have been transformed through the care and support of Ofure Orphanage.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+                <!-- Success Story 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="md:flex">
+                        <div class="md:w-1/3">
+                            <div class="h-full relative">
+                                <img src="./images/a4.png" alt="Success Story" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Amina's Journey</h3>
+                            <p class="text-gray-600 mb-4">
+                                "Thanks to Ofure Orphanage, I was able to complete my education and now work as a nurse. They didn't just give me a home - they gave me a future."
+                            </p>
+                            <div class="flex items-center">
+                                <div class="text-amber-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-sm text-gray-500">Former Resident</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Story 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="md:flex">
+                        <div class="md:w-1/3">
+                            <div class="h-full relative">
+                                <img src="./images/a6.png" alt="Success Story" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Joseph's Achievement</h3>
+                            <p class="text-gray-600 mb-4">
+                                "When I arrived at Ofure, I struggled with reading. The tutors spent extra time with me, and now I'm one of the top students in my class. I dream of becoming an engineer."
+                            </p>
+                            <div class="flex items-center">
+                                <div class="text-amber-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="text-sm text-gray-500">Current Resident, Age 14</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Impact Section (from the provided HTML) -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Your Support Makes a Difference</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    See how your donations directly impact the lives of children at Ofure Orphanage.
+                </p>
+            </div>
+
+            <div class="md:flex gap-12">
+                <!-- Info Panel (from the provided HTML) -->
+                <div class="md:w-1/2 bg-white p-8 rounded-xl shadow-md border border-gray-100 flex flex-col justify-between mb-8 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-indigo-600">Your Donation Changes Lives</h3>
+                        <p class="text-gray-600 mb-6">
+                            Every contribution, no matter the size, helps us provide food, shelter, education, and healthcare to children in need. Your generosity creates opportunities for vulnerable children to thrive.
+                        </p>
+                        <div class="bg-indigo-100 p-4 rounded-lg">
+                            <p class="text-gray-700">
+                                <i class="fas fa-info-circle mr-2 text-indigo-600"></i>
+                                92% of donations go directly to programs serving children
+                            </p>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold text-center mt-6 text-shadow">
+                        <i class="fas fa-heart mr-2"></i> Donate Now
+                    </a>
+                </div>
+
+                <!-- Chart Panel (from the provided HTML) -->
+                <div class="md:w-1/2 bg-white rounded-xl p-8 shadow-md border border-gray-100" data-aos="fade-left" data-aos-duration="1000">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6 text-center">Where Your Money Goes</h3>
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 mb-8 md:mb-0">
+                            <div class="h-64 w-64 mx-auto">
+                                <canvas id="donationChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2">
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="w-4 h-4 bg-indigo-600 rounded-full mr-3"></div>
+                                    <span class="text-gray-700">45% - Food & Shelter</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-4 h-4 bg-green-500 rounded-full mr-3"></div>
+                                    <span class="text-gray-700">30% - Education</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-4 h-4 bg-amber-400 rounded-full mr-3"></div>
+                                    <span class="text-gray-700">15% - Healthcare</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-4 h-4 bg-purple-500 rounded-full mr-3"></div>
+                                    <span class="text-gray-700">7% - Staff Salaries</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-4 h-4 bg-gray-400 rounded-full mr-3"></div>
+                                    <span class="text-gray-700">3% - Administrative</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-16 bg-gradient-to-r from-indigo-900 to-purple-900 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-6" data-aos="fade-up">Join Us in Making a Difference</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Together, we can continue to transform lives and create lasting change for vulnerable children.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6" data-aos="fade-up" data-aos-delay="200">
+                <a href="contact.html" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold inline-block text-shadow">
+                    <i class="fas fa-heart mr-2"></i> Donate Now
+                </a>
+                <a href="contact.html" class="btn-secondary text-white px-8 py-3 rounded-lg font-semibold inline-block text-shadow">
+                    <i class="fas fa-hands-helping mr-2"></i> Volunteer
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="./images/logo.png" alt="Ofure Orphanage Logo" class="h-8 w-auto mr-3">
+                        <h4 class="text-lg font-semibold text-white">Ofure Orphanage</h4>
+                    </div>
+                    <p class="text-sm">A faith-based home providing love, care, and opportunity for vulnerable children for over 10 years.</p>
+                    <div class="mt-4">
+                        <p class="text-gray-400 italic">"We surely care"</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                        <li><a href="aboutus.html" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="impact.html" class="text-white transition">Our Impact</a></li>
+                        <li><a href="involve.html" class="hover:text-white transition">Get Involved</a></li>
+                        <li><a href="gallery.html" class="hover:text-white transition">Gallery</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>No 5 Egbiri Aruogba Road, GRA, Benin City, Edo State, Nigeria</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2"></i>
+                            <span>07062354224</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2"></i>
+                            <span>info@ofureorphanage.com</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Newsletter</h4>
+                    <p class="text-sm mb-3">Stay connected with news, events, and prayer requests.</p>
+                    <form>
+                        <div class="flex">
+                            <input type="email" placeholder="Your Email" class="w-full px-3 py-2 rounded-l-lg text-gray-800 focus:outline-none">
+                            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-r-lg transition">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm">
+                <p>© 2025 Ofure Orphanage. All Rights Reserved.</p>
+                <p class="mt-1">Website by Wehustle Designs (<a href="https://wehustle.it.com" class="text-indigo-300 hover:text-white">wehustle.it.com</a>)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('open');
+        });
+
+        // Initialize donation chart
+        document.addEventListener('DOMContentLoaded', function() {
+            const chartEl = document.getElementById('donationChart');
+            if (chartEl) {
+                new Chart(chartEl, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Food & Shelter', 'Education', 'Healthcare', 'Staff', 'Admin'],
+                        datasets: [
+                            {
+                                data: [45, 30, 15, 7, 3],
+                                backgroundColor: [
+                                    '#4f46e5', // Indigo
+                                    '#10b981', // Green
+                                    '#f59e0b', // Amber
+                                    '#8b5cf6', // Purple
+                                    '#9ca3af', // Gray
+                                ],
+                            },
+                        ],
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Initialize AOS (Animate On Scroll) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false,
+                offset: 100
+            });
+        });
+    </script>
+</body>
+</html>

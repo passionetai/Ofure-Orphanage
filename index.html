@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofure Orphanage - Providing Hope and Home Through Faith</title> <!-- Slightly adjusted title -->
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Restored CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- Restored CDN -->
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Restored CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- AOS (Animate On Scroll) Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <div class="logo-container floating">
+                            <img src="./images/logo.png" alt="Ofure Orphanage Logo" class="h-12 w-auto">
+                        </div>
+                        <span class="ml-3 text-xl font-bold text-gray-800">Ofure Orphanage</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-indigo-600 font-semibold">Home</a>
+                    <a href="aboutus.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">About Us</a>
+                    <a href="impact.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Our Impact</a>
+                    <a href="involve.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Get Involved</a>
+                    <a href="gallery.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Gallery</a>
+                    <a href="contact.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobileMenuButton" class="text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu md:hidden">
+                <div class="pt-4 pb-2 space-y-2">
+                    <a href="index.html" class="block px-3 py-2 rounded-md bg-indigo-50 text-indigo-700">Home</a>
+                    <a href="aboutus.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">About Us</a>
+                    <a href="impact.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Our Impact</a>
+                    <a href="involve.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Get Involved</a>
+                    <a href="gallery.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Gallery</a>
+                    <a href="contact.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Slider Background -->
+    <section id="home" class="hero-slider-container slide-up">
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/a1.png');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/a2.png');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/a3.png');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/a4.png');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/a5.png');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/a6.png');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/a7.png');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/a8.png');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/a9.png');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/a10.png');"></div>
+        </div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                A Haven of <span class="text-indigo-600">Faith</span>, <span class="text-amber-500">Hope</span>, and Home
+            </h1>
+            <p class="text-lg mb-8">
+                Born from a divine calling, Ofure Orphanage provides loving care, shelter, sustenance, and opportunity grounded in faith.
+                Join us in nurturing God-fearing futures for vulnerable children.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-up" data-aos-delay="200">
+                <a href="contact.html" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold text-center pulse">
+                    <i class="fas fa-heart mr-2"></i> Donate Now
+                </a>
+                <a href="contact.html" class="btn-secondary text-white px-8 py-3 rounded-lg font-semibold text-center">
+                    <i class="fas fa-hands-helping mr-2"></i> Volunteer
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider bg-white">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="fill-current text-indigo-100"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="fill-current text-indigo-100"></path>
+            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="fill-current text-indigo-50"></path>
+        </svg>
+    </div>
+
+    <!-- Quick Stats -->
+    <section class="bg-indigo-50 py-12 fade-in">
+        <div class="container mx-auto px-6" data-aos="fade-up">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="zoom-in" data-aos-delay="100">
+                     <!-- Removed counter, focusing on category -->
+                    <div class="text-indigo-600 text-4xl font-bold mb-2 flex justify-center">
+                       <i class="fas fa-child"></i>
+                    </div>
+                    <div class="text-gray-700">Children Cared For</div>
+                    <div class="mt-2 text-sm text-gray-500">Providing a safe home</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-amber-600 text-4xl font-bold mb-2 flex justify-center">
+                       10+ <!-- Updated with known data -->
+                    </div>
+                    <div class="text-gray-700">Years of Dedicated Service</div>
+                    <div class="mt-2">
+                        <i class="fas fa-calendar-alt text-amber-300 text-xl"></i>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="zoom-in" data-aos-delay="300">
+                     <!-- Removed counter -->
+                    <div class="text-green-600 text-4xl font-bold mb-2 flex justify-center">
+                         <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="text-gray-700">Dedicated Volunteers</div>
+                     <div class="mt-2 text-sm text-gray-500">Sharing time and skills</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300" data-aos="zoom-in" data-aos-delay="400">
+                     <!-- Removed counter -->
+                    <div class="text-purple-600 text-4xl font-bold mb-2 flex justify-center">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="text-gray-700">Committed Staff</div>
+                    <div class="mt-2 text-sm text-gray-500">Nurturing with compassion</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="py-20 bg-white slide-up">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">About Ofure Orphanage</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+                <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                    A Sanctuary Built on Faith, Compassion, and a Divine Calling
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-start">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="relative rounded-xl overflow-hidden shadow-lg mb-8">
+                        <!-- Updated to use a5.png -->
+                        <img src="./images/a5.png"
+                              alt="Ofure Orphanage setting"
+                              class="w-full rounded-xl">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-xl font-bold">Our Home</h3>
+                            <p class="text-sm">Serving children for over 10 years</p> <!-- Updated timeframe -->
+                        </div>
+                    </div>
+
+                    <!-- Founder's message -->
+                    <div class="bg-indigo-50 p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-start">
+                             <!-- Updated founder image -->
+                            <div class="founder-image-container mr-4">
+                                <img src="./images/founder.png"
+                                     alt="Matron Philomena Isiramen"
+                                     class="founder-image">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Matron Philomena Isiramen</h4>
+                                <p class="text-sm text-gray-600 mb-2">Founder & Director, Ofure Clinic</p>
+                                <!-- Updated quote based on article -->
+                                <p class="text-gray-700 italic text-sm">"Following a divine call to 'Go out there, gather the children, shelter and feed them,' we established Ofure Orphanage to provide not just a home, but a foundation of faith and discipline."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="bg-white p-6 rounded-xl shadow-sm mb-8" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                            <div class="bg-indigo-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-bullseye text-indigo-600"></i>
+                            </div>
+                            Our Mission
+                        </h3>
+                         <!-- Updated Mission based on article -->
+                        <p class="text-gray-600 mb-6">
+                            Guided by faith, our mission is to gather vulnerable children, providing them with a loving, safe home, sustenance, and nurturing care. We aim to instill discipline and strong values, empowering them to reach their full potential as contributing members of society.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm mb-8" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                            <div class="bg-amber-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-eye text-amber-600"></i>
+                            </div>
+                            Our Vision
+                        </h3>
+                         <!-- Updated Vision based on article -->
+                        <p class="text-gray-600 mb-6">
+                            To raise God-fearing, disciplined, and resilient children who, despite their circumstances, grow to be the best in their community and contribute positively to the nation. We envision a future where every child under our care thrives.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                            <div class="bg-green-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-heart text-green-600"></i>
+                            </div>
+                            Our Values
+                        </h3>
+                         <!-- Updated Values based on article -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-gray-50 p-4 rounded-lg flex items-start hover:bg-indigo-50 transition" data-aos="zoom-in" data-aos-delay="400">
+                                <div class="bg-indigo-100 p-2 rounded-full mr-3">
+                                    <!-- Using praying hands icon for faith -->
+                                    <i class="fas fa-praying-hands text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Faith & God-Fearing</h4>
+                                    <p class="text-sm text-gray-600">Rooted in Christian principles and daily devotion</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg flex items-start hover:bg-amber-50 transition" data-aos="zoom-in" data-aos-delay="500">
+                                <div class="bg-amber-100 p-2 rounded-full mr-3">
+                                     <!-- Using shield for discipline/protection -->
+                                    <i class="fas fa-shield-alt text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Discipline & Character</h4>
+                                    <p class="text-sm text-gray-600">Instilling strong values and resilience</p>
+                                </div>
+                            </div>
+                             <div class="bg-gray-50 p-4 rounded-lg flex items-start hover:bg-green-50 transition" data-aos="zoom-in" data-aos-delay="600">
+                                <div class="bg-green-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-heart text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Love & Compassion</h4>
+                                    <p class="text-sm text-gray-600">Providing nurturing care and understanding</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg flex items-start hover:bg-purple-50 transition" data-aos="zoom-in" data-aos-delay="700">
+                                <div class="bg-purple-100 p-2 rounded-full mr-3">
+                                     <!-- Using book for education/opportunity -->
+                                    <i class="fas fa-book-open text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Opportunity & Growth</h4>
+                                    <p class="text-sm text-gray-600">Fostering potential through education and support</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Link to About Us page -->
+                    <div class="mt-6 text-center" data-aos="fade-up" data-aos-delay="800">
+                        <a href="aboutus.html" class="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800 transition">
+                            <span class="border-b border-indigo-600 pb-1">Read Our Full Story</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Impact -->
+    <section id="impact" class="py-20 bg-gray-50 fade-in">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Impact</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+                <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                    <strong>Transforming Lives Through Faith-Based Care and Support Since 2014!</strong>
+                </p>
+            </div>
+
+             <!-- Kept categories, removed fictional percentages, slightly rephrased text -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="100">
+                <div class="impact-card bg-white p-8 rounded-xl shadow-md border border-gray-100 transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-home text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Safe Housing</h3>
+                    <p class="text-gray-600">
+                        Providing a secure, clean, and loving home environment where children feel safe and cherished, supported by dedicated caregivers.
+                    </p>
+                    <!-- Removed progress bar/percentage -->
+                </div>
+
+                <div class="impact-card bg-white p-8 rounded-xl shadow-md border border-gray-100 transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-graduation-cap text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Quality Education</h3>
+                    <p class="text-gray-600">
+                        Ensuring all children attend school, providing necessary supplies, and offering tutoring support to help them succeed academically.
+                    </p>
+                     <!-- Removed progress bar/percentage -->
+                </div>
+
+                <div class="impact-card bg-white p-8 rounded-xl shadow-md border border-gray-100 transition duration-300" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-amber-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-amber-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Healthcare & Nutrition</h3>
+                    <p class="text-gray-600">
+                        Prioritizing the physical well-being of our children through regular check-ups, necessary medical care, and nutritious meals.
+                    </p>
+                     <!-- Removed progress bar/percentage -->
+                </div>
+
+                <div class="impact-card bg-white p-8 rounded-xl shadow-md border border-gray-100 transition duration-300" data-aos="fade-up" data-aos-delay="500">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                         <!-- Changed icon to reflect faith/emotional support -->
+                        <i class="fas fa-praying-hands text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Spiritual & Emotional Support</h3>
+                    <p class="text-gray-600">
+                        Nurturing faith through daily devotion and prayer, alongside emotional support to help children build resilience and strong character.
+                    </p>
+                     <!-- Removed progress bar/percentage -->
+                </div>
+
+                <div class="impact-card bg-white p-8 rounded-xl shadow-md border border-gray-100 transition duration-300" data-aos="fade-up" data-aos-delay="600">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-futbol text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Life Skills & Activities</h3>
+                    <p class="text-gray-600">
+                        Engaging children in constructive activities and teaching practical life skills to prepare them for independent futures.
+                    </p>
+                     <!-- Removed progress bar/percentage -->
+                </div>
+
+                <div class="impact-card bg-white p-8 rounded-xl shadow-md border border-gray-100 transition duration-300" data-aos="fade-up" data-aos-delay="700">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Community Building</h3>
+                    <p class="text-gray-600">
+                        Fostering a sense of family within the orphanage and maintaining connections with the wider community and supporters.
+                    </p>
+                     <!-- Removed progress bar/percentage -->
+                </div>
+            </div>
+
+            <div class="mt-16 bg-white rounded-xl p-8 md:p-12 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-2/3 mb-8 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Stories of Transformation</h3>
+
+                        <!-- Testimonial slider - Replace with actual testimonials when available -->
+                        <div class="testimonial-slider">
+                            <div class="testimonial-slide active">
+                                <p class="text-gray-600 mb-6 italic text-lg">
+                                    "When I first came to Ofure Orphanage three years ago, I struggled with reading and was falling behind in school. The tutors here spent extra time with me every evening, and now I'm one of the top students in my class. I've discovered my love for mathematics and dream of becoming an engineer someday."
+                                </p>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                                        <span class="text-indigo-600 font-bold">JO</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Joseph O.</h4>
+                                        <p class="text-sm text-gray-600">Resident, Age 14</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="testimonial-slide">
+                                <p class="text-gray-600 mb-6 italic text-lg">
+                                    "After losing my parents, I felt so alone and angry at the world. The staff at Ofure Orphanage showed me patience and love when I needed it most. Through the daily devotions and prayer times, I've found peace and a sense of purpose. I now help the younger children adjust when they first arrive, sharing with them the same comfort I received."
+                                </p>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mr-4">
+                                        <span class="text-amber-600 font-bold">GE</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Grace E.</h4>
+                                        <p class="text-sm text-gray-600">Resident, Age 16</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="testimonial-slide">
+                                <p class="text-gray-600 mb-6 italic text-lg">
+                                    "I've been volunteering at Ofure Orphanage for the past two years, teaching music once a week. The transformation I've witnessed in these children is nothing short of miraculous. Many arrive withdrawn and hesitant, but through the nurturing environment and faith-based approach, they blossom into confident, joyful individuals. What makes Ofure special is how they address not just physical needs, but spiritual and emotional healing as well."
+                                </p>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
+                                        <span class="text-green-600 font-bold">DA</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Dr. Adebayo</h4>
+                                        <p class="text-sm text-gray-600">Volunteer Music Teacher</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slider dots -->
+                        <div class="flex mt-6 space-x-2">
+                            <button class="testimonial-dot w-3 h-3 rounded-full bg-indigo-600 active" data-slide="0"></button>
+                            <button class="testimonial-dot w-3 h-3 rounded-full bg-indigo-200" data-slide="1"></button>
+                            <button class="testimonial-dot w-3 h-3 rounded-full bg-indigo-200" data-slide="2"></button>
+                        </div>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="bg-indigo-100 p-6 rounded-full shadow-lg">
+                            <i class="fas fa-quote-right text-indigo-600 text-5xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Removed the 'By the Numbers' section as data is unavailable -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved -->
+    <section id="involve" class="py-20 bg-white slide-up">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Get Involved</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+                <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Partner with us through prayer, donations, or volunteering to make a difference.
+                </p>
+            </div>
+
+            <!-- Donate Section -->
+            <div id="donate" class="mb-20">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10 border border-gray-200">
+                    <div class="md:flex">
+                        <div class="md:w-1/2 bg-gradient-to-br from-indigo-600 to-indigo-800 p-8 md:p-12 flex items-center">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-4">Your Support Sustains Our Mission</h3>
+                                <p class="text-indigo-100 mb-6">
+                                    Your generous contributions enable us to continue providing essential care, education, and a faith-filled environment for our children. Every gift matters.
+                                </p>
+                                <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                                    <p class="text-white font-medium">
+                                        <i class="fas fa-info-circle mr-2"></i>
+                                        We are committed to faithful stewardship of all donations.
+                                    </p>
+                                </div>
+
+                                <!-- Donation Amounts Kept -->
+                                <div class="mt-8">
+                                    <h4 class="text-white font-medium mb-3">Consider Giving</h4>
+                                    <div class="flex flex-wrap gap-3">
+                                        <button class="bg-white bg-opacity-10 hover:bg-opacity-20 text-white px-4 py-2 rounded-lg transition">₦5,000</button>
+                                        <button class="bg-white bg-opacity-10 hover:bg-opacity-20 text-white px-4 py-2 rounded-lg transition">₦10,000</button>
+                                        <button class="bg-white bg-opacity-10 hover:bg-opacity-20 text-white px-4 py-2 rounded-lg transition">₦25,000</button>
+                                        <button class="bg-white bg-opacity-10 hover:bg-opacity-20 text-white px-4 py-2 rounded-lg transition">₦50,000</button>
+                                        <button class="bg-white bg-opacity-10 hover:bg-opacity-20 text-white px-4 py-2 rounded-lg transition">Other</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 p-8 md:p-12">
+                             <!-- Ways to Give structure kept, text slightly adjusted -->
+                            <h4 class="text-xl font-semibold text-gray-800 mb-6">Ways to Give</h4>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                                <div class="donation-option bg-gray-50 p-6 rounded-lg border border-gray-200 transition duration-300 cursor-pointer hover:border-indigo-300">
+                                    <div class="flex items-center mb-3">
+                                        <div class="bg-indigo-100 p-2 rounded-full mr-3">
+                                            <i class="fas fa-money-bill-wave text-indigo-600"></i>
+                                        </div>
+                                        <h5 class="font-medium text-gray-800">One-Time Gift</h5>
+                                    </div>
+                                    <p class="text-sm text-gray-600">Make an immediate impact with a single donation.</p>
+                                    <div class="mt-3 text-indigo-600 text-sm font-medium">
+                                        <i class="fas fa-arrow-right mr-1"></i> Give now
+                                    </div>
+                                </div>
+
+                                <div class="donation-option bg-gray-50 p-6 rounded-lg border border-gray-200 transition duration-300 cursor-pointer hover:border-green-300">
+                                    <div class="flex items-center mb-3">
+                                        <div class="bg-green-100 p-2 rounded-full mr-3">
+                                            <i class="fas fa-calendar-check text-green-600"></i>
+                                        </div>
+                                        <h5 class="font-medium text-gray-800">Monthly Support</h5>
+                                    </div>
+                                    <p class="text-sm text-gray-600">Provide sustained help through regular giving.</p>
+                                    <div class="mt-3 text-green-600 text-sm font-medium">
+                                        <i class="fas fa-arrow-right mr-1"></i> Become a Partner
+                                    </div>
+                                </div>
+
+                                <div class="donation-option bg-gray-50 p-6 rounded-lg border border-gray-200 transition duration-300 cursor-pointer hover:border-amber-300">
+                                    <div class="flex items-center mb-3">
+                                        <div class="bg-amber-100 p-2 rounded-full mr-3">
+                                            <i class="fas fa-gift text-amber-600"></i>
+                                        </div>
+                                        <h5 class="font-medium text-gray-800">Sponsor a Child</h5>
+                                    </div>
+                                    <p class="text-sm text-gray-600">Directly support a child's education and well-being.</p>
+                                    <div class="mt-3 text-amber-600 text-sm font-medium">
+                                        <i class="fas fa-arrow-right mr-1"></i> Learn About Sponsorship
+                                    </div>
+                                </div>
+
+                                <div class="donation-option bg-gray-50 p-6 rounded-lg border border-gray-200 transition duration-300 cursor-pointer hover:border-purple-300">
+                                    <div class="flex items-center mb-3">
+                                        <div class="bg-purple-100 p-2 rounded-full mr-3">
+                                            <i class="fas fa-tshirt text-purple-600"></i>
+                                        </div>
+                                        <h5 class="font-medium text-gray-800">In-Kind Donations</h5>
+                                    </div>
+                                    <p class="text-sm text-gray-600">Donate essential items like food, clothing, and supplies.</p>
+                                    <div class="mt-3 text-purple-600 text-sm font-medium">
+                                        <i class="fas fa-arrow-right mr-1"></i> View Our Wish List
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="contact.html" class="btn-primary w-full py-3 rounded-lg font-semibold text-white text-shadow text-center inline-block">
+                                <i class="fas fa-heart mr-2"></i> Donate Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Removed donation allocation chart due to lack of data -->
+            </div>
+
+            <!-- Volunteer Section -->
+            <div id="volunteer" class="mb-20">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="md:flex flex-row-reverse">
+                        <div class="md:w-1/2 bg-gradient-to-br from-amber-600 to-amber-800 p-8 md:p-12 flex items-center">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-4">Share Your Time & Talents</h3>
+                                <p class="text-amber-100 mb-6">
+                                   Volunteers play a crucial role in enriching our children's lives. Your time and skills, offered with a compassionate heart, are invaluable.
+                                </p>
+                                <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                                    <p class="text-white font-medium">
+                                        <i class="fas fa-users mr-2"></i>
+                                        Join a community dedicated to serving with love.
+                                    </p>
+                                </div>
+
+                                <div class="mt-8">
+                                    <h4 class="text-white font-medium mb-3">Why Volunteer With Us?</h4>
+                                    <ul class="space-y-2 text-amber-100">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle mr-2 mt-1 text-amber-300"></i>
+                                            <span>Directly impact the lives and faith journey of children.</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle mr-2 mt-1 text-amber-300"></i>
+                                            <span>Experience the joy of service and community.</span>
+                                        </li>
+                                         <li class="flex items-start">
+                                            <i class="fas fa-check-circle mr-2 mt-1 text-amber-300"></i>
+                                            <span>Gain perspective and share your unique gifts.</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle mr-2 mt-1 text-amber-300"></i>
+                                            <span>Be part of a supportive, faith-based environment.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 p-8 md:p-12">
+                             <!-- Volunteer opportunities kept, minor phrasing adjustments -->
+                            <h4 class="text-xl font-semibold text-gray-800 mb-6">Volunteer Opportunities</h4>
+
+                            <div class="space-y-6 mb-8">
+                                <div class="flex items-start bg-gray-50 p-4 rounded-lg hover:bg-amber-50 transition">
+                                    <div class="bg-amber-100 p-2 rounded-full mr-4 mt-1">
+                                        <i class="fas fa-chalkboard-teacher text-amber-600"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-medium text-gray-800 mb-1">Tutoring & Mentoring</h5>
+                                        <p class="text-sm text-gray-600">
+                                            Assist with homework, reading, or share life skills (regular commitment appreciated).
+                                        </p>
+                                        <div class="mt-2">
+                                            <span class="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full">High Need Area</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start bg-gray-50 p-4 rounded-lg hover:bg-green-50 transition">
+                                    <div class="bg-green-100 p-2 rounded-full mr-4 mt-1">
+                                        <i class="fas fa-palette text-green-600"></i> <!-- Changed icon -->
+                                    </div>
+                                    <div>
+                                        <h5 class="font-medium text-gray-800 mb-1">Activities & Recreation</h5>
+                                        <p class="text-sm text-gray-600">
+                                            Lead or assist with arts, crafts, sports, music, or other enriching activities.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start bg-gray-50 p-4 rounded-lg hover:bg-indigo-50 transition">
+                                    <div class="bg-indigo-100 p-2 rounded-full mr-4 mt-1">
+                                        <i class="fas fa-hammer text-indigo-600"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-medium text-gray-800 mb-1">General Help & Maintenance</h5>
+                                        <p class="text-sm text-gray-600">
+                                            Assist with facility upkeep, organizing donations, meal preparation, or events.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start bg-gray-50 p-4 rounded-lg hover:bg-purple-50 transition">
+                                    <div class="bg-purple-100 p-2 rounded-full mr-4 mt-1">
+                                        <i class="fas fa-briefcase text-purple-600"></i> <!-- Changed icon -->
+                                    </div>
+                                    <div>
+                                        <h5 class="font-medium text-gray-800 mb-1">Skilled / Professional Support</h5>
+                                        <p class="text-sm text-gray-600">
+                                            Offer your professional skills (medical, counseling, administrative, etc.) pro bono.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="contact.html" class="btn-secondary w-full py-3 rounded-lg font-semibold text-white text-shadow text-center inline-block">
+                                <i class="fas fa-hands-helping mr-2"></i> Apply to Volunteer
+                            </a>
+
+                            <div class="mt-4 text-center text-sm text-gray-600">
+                                <p>All potential volunteers undergo screening for child safety.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Ways to Help - structure kept -->
+            <div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Other Ways to Support</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition">
+                        <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-hand-holding-usd text-green-600"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Fundraise for Us</h4>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Organize an event or campaign in your community or workplace to support Ofure.
+                        </p>
+                        <a href="contact.html" class="text-green-600 text-sm font-medium inline-flex items-center">
+                            Contact us to learn more <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition">
+                        <div class="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-shopping-bag text-purple-600"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Corporate Partnerships</h4>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Explore matching gifts, employee volunteering, or sponsorships with your company.
+                        </p>
+                        <a href="contact.html" class="text-purple-600 text-sm font-medium inline-flex items-center">
+                            Partner with us <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition">
+                        <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-gift text-blue-600"></i> <!-- Changed icon -->
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Donate Items</h4>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Provide essential items like food, clothing, school supplies, and hygiene products.
+                        </p>
+                        <a href="contact.html" class="text-blue-600 text-sm font-medium inline-flex items-center">
+                            View Our Wish List <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-20 bg-gray-50 fade-in">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Gallery</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+                <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Sharing Moments of Faith, Joy, and Community Life
+                </p>
+            </div>
+
+             <!-- Gallery Structure Kept - Replace images/captions with actual ones -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
+                <a href="gallery.html" class="block gallery-item-link" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="gallery-item rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="./images/a4.png"
+                              alt="Children at Ofure Orphanage"
+                              class="w-full h-64 object-cover">
+                        <div class="p-4 bg-white">
+                            <p class="text-gray-600 text-sm">Learning Together</p>
+                            <p class="text-xs text-gray-400">Ofure Orphanage</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="gallery.html" class="block gallery-item-link" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="gallery-item rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="./images/a6.png"
+                              alt="Children playing at Ofure Orphanage"
+                              class="w-full h-64 object-cover">
+                        <div class="p-4 bg-white">
+                            <p class="text-gray-600 text-sm">Joyful Moments</p>
+                            <p class="text-xs text-gray-400">Ofure Orphanage</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="gallery.html" class="block gallery-item-link" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="gallery-item rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="./images/a10.png"
+                              alt="Children at Ofure Orphanage"
+                              class="w-full h-64 object-cover">
+                        <div class="p-4 bg-white">
+                            <p class="text-gray-600 text-sm">Faith & Community</p>
+                            <p class="text-xs text-gray-400">Ofure Orphanage</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="gallery.html" class="block gallery-item-link" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="gallery-item rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="./images/a15.png"
+                              alt="Children at Ofure Orphanage"
+                              class="w-full h-64 object-cover">
+                        <div class="p-4 bg-white">
+                            <p class="text-gray-600 text-sm">Growing Together</p>
+                            <p class="text-xs text-gray-400">Ofure Orphanage</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="gallery.html" class="block gallery-item-link" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="gallery-item rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="./images/a12.png"
+                              alt="Children at Ofure Orphanage"
+                              class="w-full h-64 object-cover">
+                        <div class="p-4 bg-white">
+                            <p class="text-gray-600 text-sm">Building Futures</p>
+                            <p class="text-xs text-gray-400">Ofure Orphanage</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="gallery.html" class="block gallery-item-link" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="gallery-item rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="./images/a11.png"
+                              alt="Children at Ofure Orphanage"
+                              class="w-full h-64 object-cover"
+                              style="object-position: center 20%;">
+                        <div class="p-4 bg-white">
+                            <p class="text-gray-600 text-sm">Nurturing Hope</p>
+                            <p class="text-xs text-gray-400">Ofure Orphanage</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="200">
+                <a href="gallery.html" class="btn-primary px-8 py-3 rounded-lg font-semibold text-white text-shadow inline-block">
+                    <i class="fas fa-images mr-2"></i> View More Photos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-gray-50 fade-in">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Latest News</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+                <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Stay updated with the latest news and stories from Ofure Orphanage
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="100">
+                <!-- Volunteering Article -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./images/workers.png" alt="Volunteers at Ofure Orphanage" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs text-gray-500 mb-2">April 15, 2025 • Volunteering</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">The Impact of Volunteering on Children's Lives</h3>
+                        <p class="text-gray-600 mb-4">Discover how volunteering at Ofure Orphanage creates meaningful connections and transforms lives of both volunteers and children...</p>
+                        <a href="volunteer-article.html" class="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800 transition">
+                            <span>Read More</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Donation Article -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./images/a16.png" alt="Donation Impact" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs text-gray-500 mb-2">April 10, 2025 • Donations</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">How Your Donations Make a Difference</h3>
+                        <p class="text-gray-600 mb-4">Learn how your generous contributions help provide education, healthcare, and a loving environment for children at Ofure Orphanage...</p>
+                        <a href="donation-article.html" class="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800 transition">
+                            <span>Read More</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Childcare Article -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="400">
+                    <div class="h-48 overflow-hidden">
+                        <img src="./images/a6.png" alt="Childcare at Ofure Orphanage" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs text-gray-500 mb-2">April 5, 2025 • Childcare</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Best Practices in Faith-Based Childcare</h3>
+                        <p class="text-gray-600 mb-4">Explore our approach to nurturing children's spiritual, emotional, and physical well-being through faith-based care practices...</p>
+                        <a href="childcare-article.html" class="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800 transition">
+                            <span>Read More</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="200">
+                <a href="#blog" class="btn-secondary px-8 py-3 rounded-lg font-semibold text-white text-shadow inline-block">
+                    <i class="fas fa-newspaper mr-2"></i> View All Articles
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-white fade-in">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Contact Us</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+                <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                    We welcome your questions, support, and prayers. Please reach out to us.
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+
+                        <div class="space-y-6">
+                             <!-- Replace with actual contact details -->
+                            <div class="flex items-start" data-aos="fade-up" data-aos-delay="100">
+                                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Address</h4>
+                                    <p class="text-gray-600">
+                                        No 5 Egbiri Aruogba Road, GRA<br>
+                                        Benin City, Edo State, Nigeria
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start" data-aos="fade-up" data-aos-delay="200">
+                                <div class="bg-green-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Phone</h4>
+                                    <p class="text-gray-600">
+                                        07062354224<br>
+                                        Mon-Fri, 9am-5pm
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start" data-aos="fade-up" data-aos-delay="300">
+                                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Email</h4>
+                                    <p class="text-gray-600">
+                                        info@ofureorphanage.com<br>
+                                        donations@ofureorphanage.com
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8" data-aos="fade-up" data-aos-delay="400">
+                            <h4 class="font-medium text-gray-800 mb-4">Our Motto</h4>
+                            <p class="text-gray-600 italic">"We surely care"</p>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Send Us a Message</h3>
+                        <form id="contactForm">
+                            <div class="mb-6">
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                                <input type="text" id="name" name="user_name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" placeholder="Your Name">
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email" name="user_email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" placeholder="Your Email">
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                                <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" placeholder="Subject">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" placeholder="Your Message"></textarea>
+                            </div>
+                            <div id="form-status" class="mb-4 hidden">
+                                <div id="success-message" class="bg-green-100 text-green-700 p-3 rounded-lg hidden">
+                                    <i class="fas fa-check-circle mr-2"></i> Your message has been sent successfully! We'll get back to you soon.
+                                </div>
+                                <div id="error-message" class="bg-red-100 text-red-700 p-3 rounded-lg hidden">
+                                    <i class="fas fa-exclamation-circle mr-2"></i> There was an error sending your message. Please try again later.
+                                </div>
+                            </div>
+                            <button type="submit" id="submit-btn" class="btn-primary w-full py-3 rounded-lg font-semibold text-white text-shadow">
+                                <i class="fas fa-paper-plane mr-2"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="./images/logo.png" alt="Ofure Orphanage Logo" class="h-8 w-auto mr-3">
+                        <h4 class="text-lg font-semibold text-white">Ofure Orphanage</h4>
+                    </div>
+                     <!-- Updated description -->
+                    <p class="text-sm">A faith-based home providing love, care, and opportunity for vulnerable children for over 10 years.</p>
+                    <div class="mt-4">
+                        <p class="text-gray-400 italic">"We surely care"</p>
+                    </div>
+                </div>
+                 <!-- Quick Links kept -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="text-white transition">Home</a></li>
+                        <li><a href="aboutus.html" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="impact.html" class="hover:text-white transition">Our Impact</a></li>
+                        <li><a href="involve.html" class="hover:text-white transition">Get Involved</a></li>
+                        <li><a href="gallery.html" class="hover:text-white transition">Gallery</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                 <!-- Contact info structure kept, use placeholders -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>No 5 Egbiri Aruogba Road, GRA, Benin City, Edo State, Nigeria</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2"></i>
+                            <span>07062354224</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2"></i>
+                            <span>info@ofureorphanage.com</span>
+                        </li>
+                    </ul>
+                </div>
+                 <!-- Newsletter kept -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Newsletter</h4>
+                    <p class="text-sm mb-3">Stay connected with news, events, and prayer requests.</p>
+                    <form>
+                        <div class="flex">
+                            <input type="email" placeholder="Your Email" class="w-full px-3 py-2 rounded-l-lg text-gray-800 focus:outline-none">
+                            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-r-lg transition">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm">
+                <p>© 2025 Ofure Orphanage. All Rights Reserved.</p>
+                <p class="mt-1">Website by Wehustle Designs (<a href="https://wehustle.it.com" class="text-indigo-300 hover:text-white">wehustle.it.com</a>)</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script> <!-- Link to external JS -->
+
+    <!-- Initialize AOS (Animate On Scroll) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false,
+                offset: 100
+            });
+        });
+    </script>
+</body>
+</html>

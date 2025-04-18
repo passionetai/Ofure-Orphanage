@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Ofure Orphanage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- AOS (Animate On Scroll) Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <style>
+        /* 90s TV Style */
+        .tv-container {
+            background-color: #333;
+            border-radius: 20px;
+            border: 15px solid #222;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tv-screen {
+            background-color: #000;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .tv-static {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+                        url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=');
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .tv-button {
+            background: linear-gradient(to bottom, #777, #444);
+            border: 3px solid #222;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tv-button:hover {
+            transform: scale(1.1);
+        }
+
+        .tv-button:active {
+            transform: scale(0.95);
+            background: linear-gradient(to bottom, #555, #333);
+        }
+
+        .tv-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50% 50% 0 0;
+        }
+
+        .tv-controls {
+            background: #333;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            border-top: 5px solid #222;
+        }
+
+        .channel-content {
+            display: none;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .channel-content.active {
+            display: block;
+            animation: channelIn 0.5s;
+        }
+
+        @keyframes channelIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            10% { opacity: 0.3; }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .channel-label {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            z-index: 10;
+        }
+
+        /* 90s-style info box */
+        .info-box {
+            background: #f0f0f0;
+            border: 3px solid #333;
+            box-shadow: 5px 5px 0 #333;
+            padding: 20px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: repeating-linear-gradient(
+                45deg,
+                #ff6b6b,
+                #ff6b6b 10px,
+                #feca57 10px,
+                #feca57 20px,
+                #48dbfb 20px,
+                #48dbfb 30px
+            );
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <div class="logo-container floating">
+                            <img src="./images/logo.png" alt="Ofure Orphanage Logo" class="h-12 w-auto">
+                        </div>
+                        <span class="ml-3 text-xl font-bold text-gray-800">Ofure Orphanage</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Home</a>
+                    <a href="aboutus.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">About Us</a>
+                    <a href="impact.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Our Impact</a>
+                    <a href="involve.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Get Involved</a>
+                    <a href="gallery.html" class="nav-link text-indigo-600 font-semibold">Gallery</a>
+                    <a href="contact.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobileMenuButton" class="text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu md:hidden">
+                <div class="pt-4 pb-2 space-y-2">
+                    <a href="index.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Home</a>
+                    <a href="aboutus.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">About Us</a>
+                    <a href="impact.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Our Impact</a>
+                    <a href="involve.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Get Involved</a>
+                    <a href="gallery.html" class="block px-3 py-2 rounded-md bg-indigo-50 text-indigo-700">Gallery</a>
+                    <a href="contact.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-r from-indigo-900 to-purple-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Gallery</h1>
+                <div class="w-20 h-1 bg-amber-500 mx-auto"></div>
+                <p class="text-xl mt-6 max-w-3xl mx-auto">
+                    Moments of joy, learning, and growth at Ofure Orphanage. Tune in to our 90's style TV to explore our gallery channels!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TV Gallery Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our 90's TV Gallery</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Click the channel buttons below to explore different aspects of life at Ofure Orphanage!
+                </p>
+            </div>
+
+            <!-- 90's TV Set -->
+            <div class="max-w-5xl mx-auto mb-16" data-aos="zoom-in" data-aos-duration="1200">
+                <div class="tv-container">
+                    <!-- TV Screen -->
+                    <div class="tv-screen aspect-video">
+                        <div class="tv-static" id="tvStatic"></div>
+                        <div class="channel-label" id="channelLabel">CH 1: Daily Life</div>
+
+                        <!-- Channel 1: Daily Life -->
+                        <div class="channel-content active" id="channel1">
+                            <div class="grid grid-cols-2 gap-1 h-full">
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a1.png" alt="Daily Life" class="w-full h-full object-cover">
+                                </div>
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a2.png" alt="Daily Life" class="w-full h-full object-cover">
+                                </div>
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a3.png" alt="Daily Life" class="w-full h-full object-cover">
+                                </div>
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a4.png" alt="Daily Life" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Channel 2: Education -->
+                        <div class="channel-content" id="channel2">
+                            <div class="grid grid-cols-2 gap-1 h-full">
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a5.png" alt="Education" class="w-full h-full object-cover">
+                                </div>
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a6.png" alt="Education" class="w-full h-full object-cover">
+                                </div>
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a7.png" alt="Education" class="w-full h-full object-cover">
+                                </div>
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a8.png" alt="Education" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Channel 3: Activities -->
+                        <div class="channel-content" id="channel3">
+                            <div class="grid grid-cols-2 gap-1 h-full">
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a9.png" alt="Activities" class="w-full h-full object-cover">
+                                </div>
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a10.png" alt="Activities" class="w-full h-full object-cover">
+                                </div>
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a11.png" alt="Activities" class="w-full h-full object-cover">
+                                </div>
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a12.png" alt="Activities" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Channel 4: Special Events -->
+                        <div class="channel-content" id="channel4">
+                            <div class="grid grid-cols-2 gap-1 h-full">
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a13.png" alt="Special Events" class="w-full h-full object-cover">
+                                </div>
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a14.png" alt="Special Events" class="w-full h-full object-cover">
+                                </div>
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a15.png" alt="Special Events" class="w-full h-full object-cover">
+                                </div>
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/a16.png" alt="Special Events" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TV Controls -->
+                    <div class="tv-controls">
+                        <button class="tv-button active" data-channel="1" title="Daily Life">1</button>
+                        <button class="tv-button" data-channel="2" title="Learning">2</button>
+                        <button class="tv-button" data-channel="3" title="Play Time">3</button>
+                        <button class="tv-button" data-channel="4" title="Community">4</button>
+                        <button class="tv-button" id="powerButton" title="Power">
+                            <i class="fas fa-power-off"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Boxes -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Sponsorship Info -->
+                <div class="info-box" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-2xl font-bold text-indigo-600 mb-4">Sponsor a Child</h3>
+                    <p class="mb-4">
+                        Your monthly sponsorship provides a child with education, healthcare, nutrition, and a loving home. Make a lasting difference in a child's life!
+                    </p>
+                    <ul class="mb-4 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>₦15,000/month provides basic needs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>₦25,000/month includes education & healthcare</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>₦50,000/month provides comprehensive support</span>
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="btn-primary text-white px-6 py-2 rounded-lg font-semibold inline-block text-shadow">
+                        <i class="fas fa-heart mr-2"></i> Sponsor Now
+                    </a>
+                </div>
+
+                <!-- Volunteering Info -->
+                <div class="info-box" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold text-amber-600 mb-4">Volunteer With Us</h3>
+                    <p class="mb-4">
+                        Share your time and talents with our children! We have various volunteering opportunities that match your skills and availability.
+                    </p>
+                    <ul class="mb-4 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Tutoring & mentoring (2-4 hours/week)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Arts, music & sports activities</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Facility maintenance & professional services</span>
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="btn-secondary text-white px-6 py-2 rounded-lg font-semibold inline-block text-shadow">
+                        <i class="fas fa-hands-helping mr-2"></i> Volunteer Now
+                    </a>
+                </div>
+
+                <!-- Donations Info -->
+                <div class="info-box" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-2xl font-bold text-green-600 mb-4">Make a Donation</h3>
+                    <p class="mb-4">
+                        Your financial support helps us provide food, shelter, education, and healthcare to children in need. Every donation makes a difference!
+                    </p>
+                    <ul class="mb-4 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>One-time or monthly donations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>In-kind donations (clothing, supplies, etc.)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Corporate partnerships & fundraising</span>
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-semibold inline-block text-shadow transition">
+                        <i class="fas fa-gift mr-2"></i> Donate Today
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="./images/logo.png" alt="Ofure Orphanage Logo" class="h-8 w-auto mr-3">
+                        <h4 class="text-lg font-semibold text-white">Ofure Orphanage</h4>
+                    </div>
+                    <p class="text-sm">A faith-based home providing love, care, and opportunity for vulnerable children for over 10 years.</p>
+                    <div class="mt-4">
+                        <p class="text-gray-400 italic">"We surely care"</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                        <li><a href="aboutus.html" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="impact.html" class="hover:text-white transition">Our Impact</a></li>
+                        <li><a href="involve.html" class="hover:text-white transition">Get Involved</a></li>
+                        <li><a href="gallery.html" class="text-white transition">Gallery</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>No 5 Egbiri Aruogba Road, GRA, Benin City, Edo State, Nigeria</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2"></i>
+                            <span>07062354224</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2"></i>
+                            <span>info@ofureorphanage.com</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Newsletter</h4>
+                    <p class="text-sm mb-3">Stay connected with news, events, and prayer requests.</p>
+                    <form>
+                        <div class="flex">
+                            <input type="email" placeholder="Your Email" class="w-full px-3 py-2 rounded-l-lg text-gray-800 focus:outline-none">
+                            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-r-lg transition">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm">
+                <p>© 2025 Ofure Orphanage. All Rights Reserved.</p>
+                <p class="mt-1">Website by Wehustle Designs (<a href="https://wehustle.it.com" class="text-indigo-300 hover:text-white">wehustle.it.com</a>)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('open');
+        });
+
+        // TV Channel Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const channelButtons = document.querySelectorAll('.tv-button[data-channel]');
+            const channelContents = document.querySelectorAll('.channel-content');
+            const channelLabel = document.getElementById('channelLabel');
+            const tvStatic = document.getElementById('tvStatic');
+            const powerButton = document.getElementById('powerButton');
+            let isPowerOn = true;
+
+            // Channel switching function
+            function switchChannel(channelNum) {
+                if (!isPowerOn) return;
+
+                // Get channel title
+                const channelTitles = {
+                    "1": "Daily Life",
+                    "2": "Learning",
+                    "3": "Play Time",
+                    "4": "Community"
+                };
+
+                // Update channel label
+                channelLabel.textContent = `CH ${channelNum}: ${channelTitles[channelNum]}`;
+
+                // Show static effect briefly
+                tvStatic.style.opacity = '0.7';
+                setTimeout(() => {
+                    tvStatic.style.opacity = '0';
+                }, 300);
+
+                // Update active channel content
+                channelContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(`channel${channelNum}`).classList.add('active');
+
+                // Update active button
+                channelButtons.forEach(button => {
+                    button.classList.remove('active');
+                });
+                document.querySelector(`.tv-button[data-channel="${channelNum}"]`).classList.add('active');
+            }
+
+            // Add click event to channel buttons
+            channelButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (!isPowerOn) return;
+                    const channelNum = this.getAttribute('data-channel');
+                    switchChannel(channelNum);
+                });
+            });
+
+            // Power button functionality
+            powerButton.addEventListener('click', function() {
+                isPowerOn = !isPowerOn;
+
+                if (isPowerOn) {
+                    // Turn TV on
+                    tvStatic.style.opacity = '0.7';
+                    setTimeout(() => {
+                        tvStatic.style.opacity = '0';
+                        const activeChannel = document.querySelector('.tv-button[data-channel].active');
+
+                        // Channel titles
+                        const channelTitles = {
+                            "1": "Daily Life",
+                            "2": "Learning",
+                            "3": "Play Time",
+                            "4": "Community"
+                        };
+
+                        if (activeChannel) {
+                            const channelNum = activeChannel.getAttribute('data-channel');
+                            document.getElementById(`channel${channelNum}`).classList.add('active');
+                            channelLabel.textContent = `CH ${channelNum}: ${channelTitles[channelNum]}`;
+                        } else {
+                            // Default to channel 1 if no active channel
+                            document.getElementById('channel1').classList.add('active');
+                            document.querySelector('.tv-button[data-channel="1"]').classList.add('active');
+                            channelLabel.textContent = 'CH 1: Daily Life';
+                        }
+                    }, 300);
+                } else {
+                    // Turn TV off
+                    tvStatic.style.opacity = '1';
+                    setTimeout(() => {
+                        channelContents.forEach(content => {
+                            content.classList.remove('active');
+                        });
+                        channelLabel.textContent = 'OFF';
+                    }, 300);
+                }
+            });
+        });
+    </script>
+
+    <!-- Initialize AOS (Animate On Scroll) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false,
+                offset: 100
+            });
+        });
+    </script>
+</body>
+</html>

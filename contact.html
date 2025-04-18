@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Ofure Orphanage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- EmailJS Library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- AOS (Animate On Scroll) Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBguKI7BhpnOukh9teyAXh-i5XiLW9GvKU&callback=initMap"></script>
+    <style>
+        /* Custom map placeholder styling */
+        .map-placeholder {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .map-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f3f4f6"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23e5e7eb" stroke-width="1"/></svg>');
+            background-size: 20px 20px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .map-pin {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: #4f46e5;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            position: relative;
+            animation: map-pin-bounce 1s ease-in-out infinite alternate;
+            box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.2);
+        }
+
+        .map-pin::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes map-pin-bounce {
+            0% { transform: rotate(-45deg) translateY(0); }
+            100% { transform: rotate(-45deg) translateY(-5px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <div class="logo-container floating">
+                            <img src="./images/logo.png" alt="Ofure Orphanage Logo" class="h-12 w-auto">
+                        </div>
+                        <span class="ml-3 text-xl font-bold text-gray-800">Ofure Orphanage</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Home</a>
+                    <a href="aboutus.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">About Us</a>
+                    <a href="impact.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Our Impact</a>
+                    <a href="involve.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Get Involved</a>
+                    <a href="gallery.html" class="nav-link text-gray-600 hover:text-indigo-600 transition">Gallery</a>
+                    <a href="contact.html" class="nav-link text-indigo-600 font-semibold">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobileMenuButton" class="text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu md:hidden">
+                <div class="pt-4 pb-2 space-y-2">
+                    <a href="index.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Home</a>
+                    <a href="aboutus.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">About Us</a>
+                    <a href="impact.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Our Impact</a>
+                    <a href="involve.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Get Involved</a>
+                    <a href="gallery.html" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Gallery</a>
+                    <a href="contact.html" class="block px-3 py-2 rounded-md bg-indigo-50 text-indigo-700">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-r from-indigo-900 to-purple-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+                <div class="w-20 h-1 bg-amber-500 mx-auto"></div>
+                <p class="text-xl mt-6 max-w-3xl mx-auto">
+                    We'd love to hear from you! Reach out with questions, volunteer inquiries, or to learn more about supporting our children.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Get in Touch</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    We're here to answer your questions and help you find the best way to support our mission.
+                </p>
+            </div>
+
+            <!-- WhatsApp Banner -->
+            <div class="bg-green-500 text-white p-6 rounded-xl shadow-lg mb-12 flex flex-col md:flex-row items-center justify-between" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <i class="fab fa-whatsapp text-4xl mr-4"></i>
+                    <div>
+                        <h3 class="text-xl font-bold">Connect with us on WhatsApp</h3>
+                        <p>For quick responses and updates</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/2347062354224" target="_blank" class="bg-white text-green-500 px-6 py-3 rounded-lg font-semibold inline-flex items-center hover:bg-green-50 transition" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fab fa-whatsapp mr-2"></i> Chat Now: 07062354224
+                </a>
+            </div>
+
+            <!-- Contact Info & Form -->
+            <div class="md:flex gap-12">
+                <!-- Contact Info -->
+                <div class="md:w-1/3 mb-12 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-md h-full">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800 mb-1">Address</h4>
+                                    <p class="text-gray-600">No 5 Egbiri Aruogba Road, GRA, Benin City, Edo State, Nigeria</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-green-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800 mb-1">Phone</h4>
+                                    <p class="text-gray-600">
+                                        <a href="tel:+2347062354224" class="hover:text-indigo-600 transition">07062354224</a>
+                                        <span class="block text-sm text-gray-500">Mon–Fri, 9am–5pm</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                                    <i class="fab fa-whatsapp text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800 mb-1">WhatsApp</h4>
+                                    <p class="text-gray-600">
+                                        <a href="https://wa.me/2347062354224" target="_blank" class="hover:text-indigo-600 transition">07062354224</a>
+                                        <span class="block text-sm text-gray-500">Available 24/7</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800 mb-1">Email</h4>
+                                    <p class="text-gray-600">
+                                        <a href="mailto:info@ofureorphanage.com" class="hover:text-indigo-600 transition">info@ofureorphanage.com</a>
+                                        <br>
+                                        <a href="mailto:donations@ofureorphanage.com" class="hover:text-indigo-600 transition">donations@ofureorphanage.com</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="md:w-2/3" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
+
+                        <form id="contactForm">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="name" class="block font-medium text-gray-700 mb-2">Your Name *</label>
+                                    <input type="text" id="name" name="user_name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                                </div>
+
+                                <div>
+                                    <label for="email" class="block font-medium text-gray-700 mb-2">Email Address *</label>
+                                    <input type="email" id="email" name="user_email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                                </div>
+
+                                <div>
+                                    <label for="phone" class="block font-medium text-gray-700 mb-2">Phone Number</label>
+                                    <input type="tel" id="phone" name="user_phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                                </div>
+
+                                <div>
+                                    <label for="subject" class="block font-medium text-gray-700 mb-2">Inquiry Type *</label>
+                                    <select id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                                        <option value="">Please select...</option>
+                                        <option value="General Inquiry">General Inquiry</option>
+                                        <option value="Volunteer">Volunteer Opportunities</option>
+                                        <option value="Donation">Donation Information</option>
+                                        <option value="Sponsorship">Child Sponsorship</option>
+                                        <option value="Visit">Schedule a Visit</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Volunteer Fields (conditionally shown) -->
+                            <div id="volunteerFields" class="hidden bg-amber-50 p-6 rounded-lg mb-6 border border-amber-200">
+                                <h4 class="font-medium text-gray-800 mb-4">Volunteer Information</h4>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                                    <div>
+                                        <label for="volunteerArea" class="block font-medium text-gray-700 mb-2">Area of Interest</label>
+                                        <select id="volunteerArea" name="volunteerArea" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                                            <option value="">Please select...</option>
+                                            <option value="Tutoring">Tutoring & Mentoring</option>
+                                            <option value="Arts">Arts & Activities</option>
+                                            <option value="Maintenance">Facility Maintenance</option>
+                                            <option value="Professional">Professional Services</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="availability" class="block font-medium text-gray-700 mb-2">Availability</label>
+                                        <select id="availability" name="availability" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                                            <option value="">Please select...</option>
+                                            <option value="Weekdays">Weekdays</option>
+                                            <option value="Weekends">Weekends</option>
+                                            <option value="Both">Both Weekdays & Weekends</option>
+                                            <option value="Flexible">Flexible</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="volunteerExperience" class="block font-medium text-gray-700 mb-2">Relevant Experience</label>
+                                    <textarea id="volunteerExperience" name="volunteerExperience" rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Donation Fields (conditionally shown) -->
+                            <div id="donationFields" class="hidden bg-indigo-50 p-6 rounded-lg mb-6 border border-indigo-200">
+                                <h4 class="font-medium text-gray-800 mb-4">Donation Information</h4>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                                    <div>
+                                        <label for="donationType" class="block font-medium text-gray-700 mb-2">Donation Type</label>
+                                        <select id="donationType" name="donationType" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                                            <option value="">Please select...</option>
+                                            <option value="OneTime">One-Time Donation</option>
+                                            <option value="Monthly">Monthly Giving</option>
+                                            <option value="Sponsorship">Child Sponsorship</option>
+                                            <option value="InKind">In-Kind Donation</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="donationAmount" class="block font-medium text-gray-700 mb-2">Donation Amount (if applicable)</label>
+                                        <input type="text" id="donationAmount" name="donationAmount" placeholder="e.g., ₦10,000" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="donationDetails" class="block font-medium text-gray-700 mb-2">Additional Details</label>
+                                    <textarea id="donationDetails" name="donationDetails" rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="message" class="block font-medium text-gray-700 mb-2">Your Message *</label>
+                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"></textarea>
+                            </div>
+
+                            <div class="flex items-center mb-6">
+                                <input type="checkbox" id="newsletter" name="newsletter" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                                <label for="newsletter" class="ml-2 block text-gray-700">Subscribe to our newsletter for updates</label>
+                            </div>
+
+                            <div id="form-status" class="mb-4 hidden">
+                                <div id="success-message" class="bg-green-100 text-green-700 p-4 rounded-lg hidden">
+                                    <i class="fas fa-check-circle mr-2"></i> Your message has been sent successfully! We'll get back to you soon.
+                                </div>
+                                <div id="error-message" class="bg-red-100 text-red-700 p-4 rounded-lg hidden">
+                                    <i class="fas fa-exclamation-circle mr-2"></i> There was an error sending your message. Please try again later.
+                                </div>
+                            </div>
+
+                            <button type="submit" id="submit-btn" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold inline-block text-shadow w-full md:w-auto">
+                                <i class="fas fa-paper-plane mr-2"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Map Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Find Us</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Visit us at our location in Benin City, Edo State. We welcome scheduled visits to learn more about our work.
+                </p>
+            </div>
+
+            <!-- Map Container -->
+            <div class="rounded-xl overflow-hidden shadow-lg map-placeholder" data-aos="fade-up" data-aos-delay="100">
+                <div id="map" class="w-full h-96"></div>
+            </div>
+
+            <!-- Visit Information -->
+            <div class="bg-white p-6 rounded-xl shadow-md mt-8 max-w-3xl mx-auto border border-gray-100" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Planning a Visit?</h3>
+                <p class="text-gray-600 mb-4">
+                    We welcome visitors during our operating hours. Please contact us in advance to schedule a visit so we can ensure someone is available to meet with you and show you around.
+                </p>
+                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                    <div class="mb-4 md:mb-0">
+                        <p class="text-gray-700"><i class="far fa-clock mr-2 text-indigo-600"></i> <strong>Operating Hours:</strong> 9am-5pm Monday-Friday</p>
+                    </div>
+                    <a href="#contactForm" class="btn-primary text-white px-6 py-2 rounded-lg font-semibold inline-block text-shadow">
+                        <i class="fas fa-calendar-alt mr-2"></i> Schedule a Visit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="./images/logo.png" alt="Ofure Orphanage Logo" class="h-8 w-auto mr-3">
+                        <h4 class="text-lg font-semibold text-white">Ofure Orphanage</h4>
+                    </div>
+                    <p class="text-sm">A faith-based home providing love, care, and opportunity for vulnerable children for over 10 years.</p>
+                    <div class="mt-4">
+                        <p class="text-gray-400 italic">"We surely care"</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                        <li><a href="aboutus.html" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="impact.html" class="hover:text-white transition">Our Impact</a></li>
+                        <li><a href="involve.html" class="hover:text-white transition">Get Involved</a></li>
+                        <li><a href="gallery.html" class="hover:text-white transition">Gallery</a></li>
+                        <li><a href="contact.html" class="text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>No 5 Egbiri Aruogba Road, GRA, Benin City, Edo State, Nigeria</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2"></i>
+                            <span>07062354224</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2"></i>
+                            <span>info@ofureorphanage.com</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Newsletter</h4>
+                    <p class="text-sm mb-3">Stay connected with news, events, and prayer requests.</p>
+                    <form>
+                        <div class="flex">
+                            <input type="email" placeholder="Your Email" class="w-full px-3 py-2 rounded-l-lg text-gray-800 focus:outline-none">
+                            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-r-lg transition">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm">
+                <p>© 2025 Ofure Orphanage. All Rights Reserved.</p>
+                <p class="mt-1">Website by Wehustle Designs (<a href="https://wehustle.it.com" class="text-indigo-300 hover:text-white">wehustle.it.com</a>)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('open');
+        });
+
+        // Initialize EmailJS
+        (function() {
+            emailjs.init("0R-RMKt4UvrC5m7zn"); // Replace with your actual EmailJS public key
+        })();
+
+        // Form conditional fields
+        document.addEventListener('DOMContentLoaded', function() {
+            const subjectSelect = document.getElementById('subject');
+            const volunteerFields = document.getElementById('volunteerFields');
+            const donationFields = document.getElementById('donationFields');
+
+            subjectSelect.addEventListener('change', function() {
+                // Hide all conditional fields first
+                volunteerFields.classList.add('hidden');
+                donationFields.classList.add('hidden');
+
+                // Show relevant fields based on selection
+                if (this.value === 'Volunteer') {
+                    volunteerFields.classList.remove('hidden');
+                } else if (this.value === 'Donation' || this.value === 'Sponsorship') {
+                    donationFields.classList.remove('hidden');
+                }
+            });
+
+            // Form submission with EmailJS
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Show loading state
+                    const submitBtn = document.getElementById('submit-btn');
+                    const originalBtnText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+                    submitBtn.disabled = true;
+
+                    // Get form status elements
+                    const formStatus = document.getElementById('form-status');
+                    const successMessage = document.getElementById('success-message');
+                    const errorMessage = document.getElementById('error-message');
+
+                    // Hide any previous messages
+                    formStatus.classList.add('hidden');
+                    successMessage.classList.add('hidden');
+                    errorMessage.classList.add('hidden');
+
+                    // Prepare template parameters from form data
+                    const templateParams = {
+                        user_name: contactForm.user_name.value,
+                        user_email: contactForm.user_email.value,
+                        user_phone: contactForm.user_phone ? contactForm.user_phone.value : '',
+                        subject: contactForm.subject.value,
+                        message: contactForm.message.value,
+                        newsletter: contactForm.newsletter.checked ? 'Yes' : 'No'
+                    };
+
+                    // Add volunteer fields if visible
+                    if (!volunteerFields.classList.contains('hidden')) {
+                        templateParams.volunteerArea = contactForm.volunteerArea ? contactForm.volunteerArea.value : '';
+                        templateParams.availability = contactForm.availability ? contactForm.availability.value : '';
+                        templateParams.volunteerExperience = contactForm.volunteerExperience ? contactForm.volunteerExperience.value : '';
+                    }
+
+                    // Add donation fields if visible
+                    if (!donationFields.classList.contains('hidden')) {
+                        templateParams.donationType = contactForm.donationType ? contactForm.donationType.value : '';
+                        templateParams.donationAmount = contactForm.donationAmount ? contactForm.donationAmount.value : '';
+                        templateParams.donationDetails = contactForm.donationDetails ? contactForm.donationDetails.value : '';
+                    }
+
+                    // Send the email using EmailJS
+                    emailjs.send('service_0tk1j8m', 'template_owsx7nq', templateParams) // Replace with your actual service ID and template ID
+                        .then(function(response) {
+                            console.log('SUCCESS!', response.status, response.text);
+
+                            // Show success message
+                            formStatus.classList.remove('hidden');
+                            successMessage.classList.remove('hidden');
+
+                            // Reset the form
+                            contactForm.reset();
+                            volunteerFields.classList.add('hidden');
+                            donationFields.classList.add('hidden');
+
+                            // Restore button state after a short delay
+                            setTimeout(() => {
+                                submitBtn.innerHTML = originalBtnText;
+                                submitBtn.disabled = false;
+                            }, 1000);
+                        }, function(error) {
+                            console.log('FAILED...', error);
+
+                            // Show error message
+                            formStatus.classList.remove('hidden');
+                            errorMessage.classList.remove('hidden');
+
+                            // Restore button state
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.disabled = false;
+                        });
+                });
+            }
+        });
+
+        // Google Maps initialization
+        function initMap() {
+            // Coordinates for Benin City, Nigeria (approximate)
+            const ofureLocation = { lat: 6.3350, lng: 5.6038 };
+
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: ofureLocation,
+                mapTypeControl: true,
+                streetViewControl: true,
+                fullscreenControl: true,
+                zoomControl: true,
+                styles: [
+                    {
+                        featureType: 'poi',
+                        elementType: 'labels.text',
+                        stylers: [{ visibility: 'on' }]
+                    },
+                    {
+                        featureType: 'poi.business',
+                        elementType: 'labels.text',
+                        stylers: [{ visibility: 'on' }]
+                    },
+                    {
+                        featureType: 'poi.park',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#e5e5e5' }]
+                    },
+                    {
+                        featureType: 'poi.park',
+                        elementType: 'labels.text.fill',
+                        stylers: [{ color: '#9e9e9e' }]
+                    }
+                ]
+            });
+
+            // Create an info window content
+            const contentString = `
+                <div style="width: 200px; padding: 10px;">
+                    <h3 style="margin: 0 0 10px; font-weight: bold; color: #4338ca;">Ofure Orphanage</h3>
+                    <p style="margin: 0 0 5px;">No 5 Egbiri Aruogba Road, GRA, Benin City, Edo State, Nigeria</p>
+                    <p style="margin: 0;"><a href="tel:+2347062354224" style="color: #4338ca; text-decoration: none;">07062354224</a></p>
+                </div>
+            `;
+
+            // Add info window
+            const infoWindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            // Add marker for Ofure Orphanage (using standard Marker as fallback)
+            // Note: For production, consider migrating to AdvancedMarkerElement
+            const marker = new google.maps.Marker({
+                position: ofureLocation,
+                map: map,
+                title: 'Ofure Orphanage',
+                animation: google.maps.Animation.DROP
+            });
+
+            // Open info window when marker is clicked
+            marker.addListener('click', function() {
+                infoWindow.open(map, marker);
+            });
+
+            // Open info window by default
+            infoWindow.open(map, marker);
+        }
+
+        // Fallback if Google Maps fails to load
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const mapDiv = document.getElementById('map');
+                if (mapDiv && mapDiv.innerHTML === '') {
+                    // Create a map-like background with CSS
+                    mapDiv.style.backgroundImage = "url('https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/5.6038,6.3350,14,0/1200x600?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw')";
+                    mapDiv.style.backgroundSize = "cover";
+                    mapDiv.style.backgroundPosition = "center";
+                    mapDiv.style.backgroundRepeat = "no-repeat";
+
+                    mapDiv.innerHTML = `
+                        <div class="flex flex-col items-center justify-center h-full bg-black bg-opacity-10 backdrop-filter backdrop-blur-[1px] p-6 text-center">
+                            <div class="bg-white p-6 rounded-xl shadow-lg max-w-md">
+                                <div class="map-pin mb-4 mx-auto"></div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Ofure Orphanage</h3>
+                                <p class="text-gray-600 mb-4">No 5 Egbiri Aruogba Road, GRA, Benin City, Edo State, Nigeria</p>
+                                <a href="https://maps.google.com/?q=No+5+Egbiri+Aruogba+Road+GRA+Benin+City+Edo+State+Nigeria" target="_blank" class="btn-primary text-white px-6 py-2 rounded-lg font-semibold inline-block text-shadow">
+                                    <i class="fas fa-external-link-alt mr-2"></i> View Location on Google Maps
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                }
+            }, 1500); // Check after 1.5 seconds
+        });
+    </script>
+
+    <!-- Initialize AOS (Animate On Scroll) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false,
+                offset: 100
+            });
+        });
+    </script>
+</body>
+</html>
