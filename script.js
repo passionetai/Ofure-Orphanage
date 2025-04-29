@@ -190,8 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // EmailJS Contact Form Integration
-    // Initialize EmailJS with your public key
-    emailjs.init("0R-RMKt4UvrC5m7zn"); // Replace with your actual EmailJS public key
+    // Initialize EmailJS with your public key from config
+    emailjs.init(emailJSConfig.PUBLIC_KEY);
 
     // Contact form submission
     const contactForm = document.getElementById('contactForm');
@@ -215,42 +215,66 @@ document.addEventListener('DOMContentLoaded', () => {
             successMessage.classList.add('hidden');
             errorMessage.classList.add('hidden');
 
+            // Get reCAPTCHA response
+            const recaptchaResponse = grecaptcha.getResponse();
+
+            // Check if reCAPTCHA is completed
+            if (!recaptchaResponse) {
+                // Show error message for reCAPTCHA
+                formStatus.classList.remove('hidden');
+                errorMessage.classList.remove('hidden');
+                errorMessage.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Please complete the reCAPTCHA verification.';
+
+                // Restore button state
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                return;
+            }
+
             // Prepare template parameters from form data
             const templateParams = {
                 user_name: contactForm.user_name.value,
                 user_email: contactForm.user_email.value,
                 subject: contactForm.subject.value,
-                message: contactForm.message.value
+                message: contactForm.message.value,
+                newsletter: contactForm.newsletter?.checked ? 'Yes' : 'No',
+                'g-recaptcha-response': recaptchaResponse
             };
 
             // Send the email using EmailJS
-            emailjs.send('service_0tk1j8m', 'template_f37rbd4', templateParams) // Replace with your actual service ID and template ID
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
+            emailjs.send(emailJSConfig.SERVICE_ID, emailJSConfig.TEMPLATE_ID, templateParams)
+            .then(function(response) {
+                console.log('SUCCESS!', response);
 
-                    // Show success message
-                    formStatus.classList.remove('hidden');
-                    successMessage.classList.remove('hidden');
+                // Show success message
+                formStatus.classList.remove('hidden');
+                successMessage.classList.remove('hidden');
 
-                    // Reset the form
-                    contactForm.reset();
+                // Reset the form
+                contactForm.reset();
 
-                    // Restore button state after a short delay
-                    setTimeout(() => {
-                        submitBtn.innerHTML = originalBtnText;
-                        submitBtn.disabled = false;
-                    }, 1000);
-                }, function(error) {
-                    console.log('FAILED...', error);
+                // Reset reCAPTCHA
+                grecaptcha.reset();
 
-                    // Show error message
-                    formStatus.classList.remove('hidden');
-                    errorMessage.classList.remove('hidden');
-
-                    // Restore button state
+                // Restore button state after a short delay
+                setTimeout(() => {
                     submitBtn.innerHTML = originalBtnText;
                     submitBtn.disabled = false;
-                });
+                }, 1000);
+            }, function(error) {
+                console.error('FAILED...', error);
+
+                // Show error message
+                formStatus.classList.remove('hidden');
+                errorMessage.classList.remove('hidden');
+
+                // Reset reCAPTCHA
+                grecaptcha.reset();
+
+                // Restore button state
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            });
         });
     }
 }); // End DOMContentLoaded

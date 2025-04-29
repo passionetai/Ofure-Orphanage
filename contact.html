@@ -9,9 +9,13 @@
     <link rel="stylesheet" href="style.css">
     <!-- EmailJS Library -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- EmailJS Config -->
+    <script src="js/config.js"></script>
     <!-- AOS (Animate On Scroll) Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Google reCAPTCHA v2 -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <!-- Google Maps API -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBguKI7BhpnOukh9teyAXh-i5XiLW9GvKU&callback=initMap"></script>
     <style>
@@ -141,9 +145,14 @@
                         <p>For quick responses and updates</p>
                     </div>
                 </div>
-                <a href="https://wa.me/2347062354224" target="_blank" class="bg-white text-green-500 px-6 py-3 rounded-lg font-semibold inline-flex items-center hover:bg-green-50 transition" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="fab fa-whatsapp mr-2"></i> Chat Now: 07062354224
-                </a>
+                <div class="flex flex-col sm:flex-row gap-2" data-aos="zoom-in" data-aos-delay="300">
+                    <a href="https://wa.me/2347062354224" target="_blank" class="bg-white text-green-500 px-6 py-3 rounded-lg font-semibold inline-flex items-center hover:bg-green-50 transition">
+                        <i class="fab fa-whatsapp mr-2"></i> 07062354224
+                    </a>
+                    <a href="https://wa.me/2349157321422" target="_blank" class="bg-white text-green-500 px-6 py-3 rounded-lg font-semibold inline-flex items-center hover:bg-green-50 transition">
+                        <i class="fab fa-whatsapp mr-2"></i> 09157321422
+                    </a>
+                </div>
             </div>
 
             <!-- Contact Info & Form -->
@@ -171,7 +180,8 @@
                                 <div>
                                     <h4 class="font-medium text-gray-800 mb-1">Phone</h4>
                                     <p class="text-gray-600">
-                                        <a href="tel:+2347062354224" class="hover:text-indigo-600 transition">07062354224</a>
+                                        <a href="tel:+2347062354224" class="hover:text-indigo-600 transition">07062354224</a><br>
+                                        <a href="tel:+2349157321422" class="hover:text-indigo-600 transition">09157321422</a>
                                         <span class="block text-sm text-gray-500">Mon–Fri, 9am–5pm</span>
                                     </p>
                                 </div>
@@ -184,7 +194,8 @@
                                 <div>
                                     <h4 class="font-medium text-gray-800 mb-1">WhatsApp</h4>
                                     <p class="text-gray-600">
-                                        <a href="https://wa.me/2347062354224" target="_blank" class="hover:text-indigo-600 transition">07062354224</a>
+                                        <a href="https://wa.me/2347062354224" target="_blank" class="hover:text-indigo-600 transition">07062354224</a><br>
+                                        <a href="https://wa.me/2349157321422" target="_blank" class="hover:text-indigo-600 transition">09157321422</a>
                                         <span class="block text-sm text-gray-500">Available 24/7</span>
                                     </p>
                                 </div>
@@ -212,121 +223,52 @@
                     <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100">
                         <h3 class="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
 
-                        <form id="contactForm">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                <div>
-                                    <label for="name" class="block font-medium text-gray-700 mb-2">Your Name *</label>
-                                    <input type="text" id="name" name="user_name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
-                                </div>
-
-                                <div>
-                                    <label for="email" class="block font-medium text-gray-700 mb-2">Email Address *</label>
-                                    <input type="email" id="email" name="user_email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
-                                </div>
-
-                                <div>
-                                    <label for="phone" class="block font-medium text-gray-700 mb-2">Phone Number</label>
-                                    <input type="tel" id="phone" name="user_phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
-                                </div>
-
-                                <div>
-                                    <label for="subject" class="block font-medium text-gray-700 mb-2">Inquiry Type *</label>
-                                    <select id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
-                                        <option value="">Please select...</option>
-                                        <option value="General Inquiry">General Inquiry</option>
-                                        <option value="Volunteer">Volunteer Opportunities</option>
-                                        <option value="Donation">Donation Information</option>
-                                        <option value="Sponsorship">Child Sponsorship</option>
-                                        <option value="Visit">Schedule a Visit</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
+                        <form id="contactForm" class="space-y-6">
+                            <div>
+                                <label for="user_name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                                <input type="text" name="user_name" id="user_name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                             </div>
 
-                            <!-- Volunteer Fields (conditionally shown) -->
-                            <div id="volunteerFields" class="hidden bg-amber-50 p-6 rounded-lg mb-6 border border-amber-200">
-                                <h4 class="font-medium text-gray-800 mb-4">Volunteer Information</h4>
-
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
-                                    <div>
-                                        <label for="volunteerArea" class="block font-medium text-gray-700 mb-2">Area of Interest</label>
-                                        <select id="volunteerArea" name="volunteerArea" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
-                                            <option value="">Please select...</option>
-                                            <option value="Tutoring">Tutoring & Mentoring</option>
-                                            <option value="Arts">Arts & Activities</option>
-                                            <option value="Maintenance">Facility Maintenance</option>
-                                            <option value="Professional">Professional Services</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label for="availability" class="block font-medium text-gray-700 mb-2">Availability</label>
-                                        <select id="availability" name="availability" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
-                                            <option value="">Please select...</option>
-                                            <option value="Weekdays">Weekdays</option>
-                                            <option value="Weekends">Weekends</option>
-                                            <option value="Both">Both Weekdays & Weekends</option>
-                                            <option value="Flexible">Flexible</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label for="volunteerExperience" class="block font-medium text-gray-700 mb-2">Relevant Experience</label>
-                                    <textarea id="volunteerExperience" name="volunteerExperience" rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"></textarea>
-                                </div>
+                            <div>
+                                <label for="user_email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <input type="email" name="user_email" id="user_email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                             </div>
 
-                            <!-- Donation Fields (conditionally shown) -->
-                            <div id="donationFields" class="hidden bg-indigo-50 p-6 rounded-lg mb-6 border border-indigo-200">
-                                <h4 class="font-medium text-gray-800 mb-4">Donation Information</h4>
-
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
-                                    <div>
-                                        <label for="donationType" class="block font-medium text-gray-700 mb-2">Donation Type</label>
-                                        <select id="donationType" name="donationType" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
-                                            <option value="">Please select...</option>
-                                            <option value="OneTime">One-Time Donation</option>
-                                            <option value="Monthly">Monthly Giving</option>
-                                            <option value="Sponsorship">Child Sponsorship</option>
-                                            <option value="InKind">In-Kind Donation</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label for="donationAmount" class="block font-medium text-gray-700 mb-2">Donation Amount (if applicable)</label>
-                                        <input type="text" id="donationAmount" name="donationAmount" placeholder="e.g., ₦10,000" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label for="donationDetails" class="block font-medium text-gray-700 mb-2">Additional Details</label>
-                                    <textarea id="donationDetails" name="donationDetails" rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"></textarea>
-                                </div>
+                            <div>
+                                <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                                <input type="text" name="subject" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                             </div>
 
+                            <div>
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                                <textarea name="message" id="message" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                            </div>
+
+                            <div class="flex items-center">
+                                <input type="checkbox" name="newsletter" id="newsletter" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                                <label for="newsletter" class="ml-2 block text-gray-700">Subscribe to our newsletter</label>
+                            </div>
+
+                            <!-- reCAPTCHA -->
                             <div class="mb-6">
-                                <label for="message" class="block font-medium text-gray-700 mb-2">Your Message *</label>
-                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"></textarea>
+                                <label class="block text-gray-700 font-medium mb-2">Verification</label>
+                                <div class="g-recaptcha" data-sitekey="6LenBSgrAAAAAF9A8qeotF441B0KxQdcvS-banub"></div>
+                                <p class="text-xs text-gray-500 mt-2">Please verify that you are not a robot.</p>
                             </div>
 
-                            <div class="flex items-center mb-6">
-                                <input type="checkbox" id="newsletter" name="newsletter" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-                                <label for="newsletter" class="ml-2 block text-gray-700">Subscribe to our newsletter for updates</label>
-                            </div>
-
-                            <div id="form-status" class="mb-4 hidden">
-                                <div id="success-message" class="bg-green-100 text-green-700 p-4 rounded-lg hidden">
-                                    <i class="fas fa-check-circle mr-2"></i> Your message has been sent successfully! We'll get back to you soon.
+                            <!-- Form Status Messages -->
+                            <div id="form-status" class="hidden">
+                                <div id="success-message" class="hidden bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+                                    <p class="font-bold">Success!</p>
+                                    <p>Your message has been sent successfully. We'll get back to you soon.</p>
                                 </div>
-                                <div id="error-message" class="bg-red-100 text-red-700 p-4 rounded-lg hidden">
-                                    <i class="fas fa-exclamation-circle mr-2"></i> There was an error sending your message. Please try again later.
+                                <div id="error-message" class="hidden bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
+                                    <p class="font-bold">Error!</p>
+                                    <p>There was a problem sending your message. Please try again later.</p>
                                 </div>
                             </div>
 
-                            <button type="submit" id="submit-btn" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold inline-block text-shadow w-full md:w-auto">
+                            <button type="submit" id="submit-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md">
                                 <i class="fas fa-paper-plane mr-2"></i> Send Message
                             </button>
                         </form>
@@ -404,7 +346,7 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone-alt mt-1 mr-2"></i>
-                            <span>07062354224</span>
+                            <span>07062354224 / 09157321422</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope mt-1 mr-2"></i>
@@ -440,89 +382,44 @@
             mobileMenu.classList.toggle('open');
         });
 
-        // Initialize EmailJS
-        (function() {
-            emailjs.init("0R-RMKt4UvrC5m7zn"); // Replace with your actual EmailJS public key
-        })();
-
-        // Form conditional fields
         document.addEventListener('DOMContentLoaded', function() {
-            const subjectSelect = document.getElementById('subject');
-            const volunteerFields = document.getElementById('volunteerFields');
-            const donationFields = document.getElementById('donationFields');
+            // Initialize EmailJS with the public key from config
+            emailjs.init(emailJSConfig.PUBLIC_KEY);
 
-            subjectSelect.addEventListener('change', function() {
-                // Hide all conditional fields first
-                volunteerFields.classList.add('hidden');
-                donationFields.classList.add('hidden');
-
-                // Show relevant fields based on selection
-                if (this.value === 'Volunteer') {
-                    volunteerFields.classList.remove('hidden');
-                } else if (this.value === 'Donation' || this.value === 'Sponsorship') {
-                    donationFields.classList.remove('hidden');
-                }
-            });
-
-            // Form submission with EmailJS
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
 
-                    // Show loading state
                     const submitBtn = document.getElementById('submit-btn');
                     const originalBtnText = submitBtn.innerHTML;
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
                     submitBtn.disabled = true;
 
-                    // Get form status elements
                     const formStatus = document.getElementById('form-status');
                     const successMessage = document.getElementById('success-message');
                     const errorMessage = document.getElementById('error-message');
 
-                    // Hide any previous messages
                     formStatus.classList.add('hidden');
                     successMessage.classList.add('hidden');
                     errorMessage.classList.add('hidden');
 
-                    // Prepare template parameters from form data
+                    // Use the same parameter format as in script.js
                     const templateParams = {
                         user_name: contactForm.user_name.value,
                         user_email: contactForm.user_email.value,
-                        user_phone: contactForm.user_phone ? contactForm.user_phone.value : '',
                         subject: contactForm.subject.value,
                         message: contactForm.message.value,
-                        newsletter: contactForm.newsletter.checked ? 'Yes' : 'No'
+                        newsletter: contactForm.newsletter?.checked ? 'Yes' : 'No'
                     };
 
-                    // Add volunteer fields if visible
-                    if (!volunteerFields.classList.contains('hidden')) {
-                        templateParams.volunteerArea = contactForm.volunteerArea ? contactForm.volunteerArea.value : '';
-                        templateParams.availability = contactForm.availability ? contactForm.availability.value : '';
-                        templateParams.volunteerExperience = contactForm.volunteerExperience ? contactForm.volunteerExperience.value : '';
-                    }
-
-                    // Add donation fields if visible
-                    if (!donationFields.classList.contains('hidden')) {
-                        templateParams.donationType = contactForm.donationType ? contactForm.donationType.value : '';
-                        templateParams.donationAmount = contactForm.donationAmount ? contactForm.donationAmount.value : '';
-                        templateParams.donationDetails = contactForm.donationDetails ? contactForm.donationDetails.value : '';
-                    }
-
-                    // Send the email using EmailJS
-                    emailjs.send('service_0tk1j8m', 'template_owsx7nq', templateParams) // Replace with your actual service ID and template ID
+                    // Use the same service and template IDs from config
+                    emailjs.send(emailJSConfig.SERVICE_ID, emailJSConfig.TEMPLATE_ID, templateParams)
                         .then(function(response) {
                             console.log('SUCCESS!', response.status, response.text);
-
-                            // Show success message
                             formStatus.classList.remove('hidden');
                             successMessage.classList.remove('hidden');
-
-                            // Reset the form
                             contactForm.reset();
-                            volunteerFields.classList.add('hidden');
-                            donationFields.classList.add('hidden');
 
                             // Restore button state after a short delay
                             setTimeout(() => {
@@ -531,8 +428,6 @@
                             }, 1000);
                         }, function(error) {
                             console.log('FAILED...', error);
-
-                            // Show error message
                             formStatus.classList.remove('hidden');
                             errorMessage.classList.remove('hidden');
 
@@ -540,6 +435,26 @@
                             submitBtn.innerHTML = originalBtnText;
                             submitBtn.disabled = false;
                         });
+                });
+            }
+
+            // Form conditional fields
+            const subjectSelect = document.getElementById('subject');
+            const volunteerFields = document.getElementById('volunteerFields');
+            const donationFields = document.getElementById('donationFields');
+
+            if (subjectSelect) {
+                subjectSelect.addEventListener('change', function() {
+                    // Hide all conditional fields first
+                    if (volunteerFields) volunteerFields.classList.add('hidden');
+                    if (donationFields) donationFields.classList.add('hidden');
+
+                    // Show relevant fields based on selection
+                    if (this.value === 'Volunteer' && volunteerFields) {
+                        volunteerFields.classList.remove('hidden');
+                    } else if ((this.value === 'Donation' || this.value === 'Sponsorship') && donationFields) {
+                        donationFields.classList.remove('hidden');
+                    }
                 });
             }
         });
@@ -586,6 +501,7 @@
                     <h3 style="margin: 0 0 10px; font-weight: bold; color: #4338ca;">Ofure Orphanage</h3>
                     <p style="margin: 0 0 5px;">No 5 Egbiri Aruogba Road, GRA, Benin City, Edo State, Nigeria</p>
                     <p style="margin: 0;"><a href="tel:+2347062354224" style="color: #4338ca; text-decoration: none;">07062354224</a></p>
+                    <p style="margin: 0;"><a href="tel:+2349157321422" style="color: #4338ca; text-decoration: none;">09157321422</a></p>
                 </div>
             `;
 
@@ -628,7 +544,8 @@
                             <div class="bg-white p-6 rounded-xl shadow-lg max-w-md">
                                 <div class="map-pin mb-4 mx-auto"></div>
                                 <h3 class="text-xl font-bold text-gray-800 mb-2">Ofure Orphanage</h3>
-                                <p class="text-gray-600 mb-4">No 5 Egbiri Aruogba Road, GRA, Benin City, Edo State, Nigeria</p>
+                                <p class="text-gray-600 mb-2">No 5 Egbiri Aruogba Road, GRA, Benin City, Edo State, Nigeria</p>
+                                <p class="text-gray-600 mb-4">07062354224 / 09157321422</p>
                                 <a href="https://maps.google.com/?q=No+5+Egbiri+Aruogba+Road+GRA+Benin+City+Edo+State+Nigeria" target="_blank" class="btn-primary text-white px-6 py-2 rounded-lg font-semibold inline-block text-shadow">
                                     <i class="fas fa-external-link-alt mr-2"></i> View Location on Google Maps
                                 </a>
@@ -654,3 +571,24 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
